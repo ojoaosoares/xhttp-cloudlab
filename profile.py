@@ -26,7 +26,7 @@ pc.defineParameter("clientType", "Client hardware type",
                    longDescription="Node type for the load generator. It must be "
                    "stronger than the server: r6525 has 64 cores and a ConnectX-6 100G.")
 pc.defineParameter("linkSpeed", "Link speed (Kbps)",
-                   portal.ParameterType.BANDWIDTH, 100000000,
+                   portal.ParameterType.INTEGER, 100000000,
                    longDescription="100000000 = 100 Gbit/s. The speed picks the NIC "
                    "port: asking for 100 Gbit/s maps the link onto the 100G port.")
 pc.defineParameter("sameSwitch", "Keep both nodes on one switch",
@@ -64,7 +64,7 @@ iface_client = make_node("client", params.clientType, "10.10.1.2", "client")
 link = request.Link("link0")
 link.addInterface(iface_server)
 link.addInterface(iface_client)
-link.bandwidth = params.linkSpeed
+link.bandwidth = int(params.linkSpeed)
 link.setNoBandwidthShaping()      # never shape the link in software
 if params.sameSwitch:
     link.setNoInterSwitchLinks()  # both nodes on the same switch
