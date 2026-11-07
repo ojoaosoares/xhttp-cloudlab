@@ -30,7 +30,7 @@ pc.defineParameter("linkSpeed", "Link speed (Kbps)",
                    longDescription="100000000 = 100 Gbit/s. The speed picks the NIC "
                    "port: asking for 100 Gbit/s maps the link onto the 100G port.")
 pc.defineParameter("sameSwitch", "Keep both nodes on one switch",
-                   portal.ParameterType.BOOLEAN, True,
+                   portal.ParameterType.BOOLEAN, False,
                    longDescription="No inter-switch hop between server and client. "
                    "Mapping fails if no two free nodes share a switch; untick then.")
 pc.defineParameter("image", "Disk image",
